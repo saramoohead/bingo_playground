@@ -1,1 +1,27 @@
 /* CSS declarations go here */
+body {
+  font-family: "helvetica neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+  background-image: url(../images/background.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  color: 444444;
+  width: 1200px;
+  margin: 0 auto 0 auto;
+}
+
+
+.currentAnimal {
+  
+
+}
+
+.currentNumbers {
+  font-size: 60;
+  text-align: center;
+}
