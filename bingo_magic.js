@@ -7,15 +7,12 @@ if (Meteor.isClient) {
         "click .next_button": function() {
 
         var array = Images.find().fetch();
+        console.log("Array length", array.length);
         var randomIndex = Math.floor( Math.random() * array.length );
         var currentImageSRC = array[randomIndex];
 
         if (currentImageSRC) {
-            console.log("inside next_button");
-            console.log(currentImageSRC, currentImageSRC._id);
-            // Meteor.call("excludeImage", currentImageSRC._id);
             Session.set("currentImage", currentImageSRC);
-            console.log(Session.get("currentImage"));
             return currentImageSRC;
         }
 
