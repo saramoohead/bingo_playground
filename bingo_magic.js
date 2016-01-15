@@ -10,11 +10,14 @@ if (Meteor.isClient) {
         var randomIndex = Math.floor( Math.random() * array.length );
         var currentImageSRC = array[randomIndex];
 
-        if (currentImageSRC) {
+        // if (currentImageSRC) {
+            // console.log("Step 1 inside click next", currentImageSRC);
+            Meteor.call("excludeImage", currentImageSRC);
+            // console.log("Step 2 inside click next", currentImageSRC);
             Session.set("currentImage", currentImageSRC);
-            Meteor.call("excludeImage", currentImageSRC.id);
+            // console.log("Step 3 inside click next", currentImageSRC);
             return currentImageSRC;
-        }
+        // }
 
 
         }
@@ -36,6 +39,7 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code to run on server at startup
+    console.log("resettingImageDatabase");
     Meteor.call("resetImageDatabase");
     Meteor.call("insertImages");
 
