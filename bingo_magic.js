@@ -5,31 +5,42 @@ if (Meteor.isClient) {
 
     Template.next_call.events({
         "click .next_button": function() {
-            Meteor.call("getNewImage");
+
+        var array = Images.find().fetch();
+        var randomIndex = Math.floor( Math.random() * array.length );
+        var currentImageSRC = array[randomIndex];
+
+        if (currentImageSRC) {
+            console.log("inside next_button");
+            console.log(currentImageSRC, currentImageSRC._id);
+            // Meteor.call("excludeImage", currentImageSRC._id);
+            Session.set("currentImage", currentImageSRC);
+            console.log(Session.get("currentImage"));
+            return currentImageSRC;
+        }
+
+
         }
     });
 
     Template.animal_bingo.helpers({
         currentImageSRC: function () {
 
-            var array = Images.find().fetch();
-            var randomIndex = Math.floor( Math.random() * array.length );
-            var currentImageSRC = array[randomIndex];
+            var displayImage = Session.get("currentImage");
+            return displayImage;
 
-            if (currentImageSRC) {
-                Meteor.call("excludeImage", currentImageSRC._id);
-                return currentImageSRC;
-            }
         }
     });
+
 
 }
 
 if (Meteor.isServer) {
 
-    Meteor.startup(function () {
+  Meteor.startup(function () {
     // code to run on server at startup
-        Meteor.call("resetImageDatabase");
-        Meteor.call("insertImages");
+    Meteor.call("resetImageDatabase");
+    Meteor.call("insertImages");
+
   });
 }
