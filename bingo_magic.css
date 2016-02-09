@@ -16,12 +16,12 @@ body {
 }
 
 
-.currentAnimal {
+/*.currentAnimal {
   
 
-}
+}*/
 
 .currentNumbers {
-  font-size: 60;
+  font-size: 400%;
   text-align: center;
 }

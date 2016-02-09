@@ -1,7 +1,9 @@
-Images = new Mongo.Collection('images');
+Images = new Mongo.Collection("images");
+Numbesr = new Mongo.Collection("numbers");
 
 if (Meteor.isClient) {
   Meteor.subscribe("images");
+  Meteor.subscribe("numbers");
 
     Template.next_call.events({
         "click .next_button": function() {
