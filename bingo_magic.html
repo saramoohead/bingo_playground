@@ -5,16 +5,39 @@
 </head>
 
 <body>
-  <h1>Welcome to St John's Family Bingo Evening</h1>
-  {{> welcome}}
+<div class="row welcome">
+  <div class="col-lg-12">
+    <h1>Welcome to St John's Family Bingo Evening</h1>
+    {{> welcome}}
+  </div>
+</div>
 
-  <h2>Now calling:</h2>
+<div class="row">
   {{> next_call}}
-  {{> animal_bingo}}
-  {{> numbers_bingo}}
-  {{> new_game}}
+</div>
 
+<div class="row">
+  <div class="col-lg-12">
+    <h2>Now calling:</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+  {{> animal_bingo}}
+  </div>
+  <div class="col-sm-6">
+  {{> numbers_bingo}}
+  </div>
+</div>
+
+<div class="row">
+  {{> new_game}}
+</div>
+
+<div class="row">
   {{> called_animals}}
+</div>
 </body>
 
 <template name="welcome">
@@ -30,34 +53,33 @@
   </h3>
 </template>
 
+<template name="next_call">
+  <button class="btn-success next_button">Next Call</button>
+</template>
+
 <template name="animal_bingo">
-  <div class="currentAnimal col-sm-4">{{{currentImageSRC.imageSRC}}}</div>
+  <div class="currentAnimal">{{{currentImageSRC.imageSRC}}}</div>
 </template>
 
 <template name="numbers_bingo">
-  <p><br></p>
-  <p><br></p>
-  <h1>
-  <div class="currentNumbers col-sm-4">{{firstNumber}} and {{secondNumber}}</div>
-  </h1>
-  <p><br></p>
-  <p><br></p>
+  <div class="numberCircle">
+    <div class="height_fix">
+      <div class="currentNumbers">{{firstNumber.number}}</div>
+      and
+      <div class="currentNumbers">{{secondNumber.number}}</div>
+    </div>
+  </div>
 </template>
 
 <template name="new_game">
-  <button class="new_farm">New Farm Game</button>
-  <button class="new_jungle">New Jungle Game</button>
-  <button class="new_sweets">New Sweets Game</button>
-</template>
-
-<template name="next_call">
-  <button class="next_button">Next Call</button>
+  <button class="btn new_farm">New Farm Game</button>
+  <button class="btn new_jungle">New Jungle Game</button>
+  <button class="btn new_sweets">New Sweets Game</button>
 </template>
 
 <template name="called_animals">
   <h2>Already called:</h2>
   <div class="calledAnimals"><ul>{{#each calledImages}}<li>{{{imageSRC}}}</li>{{/each}}</ul></div>
 </template>
-
 
 

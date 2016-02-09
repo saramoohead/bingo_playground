@@ -15,13 +15,15 @@ body {
   margin: 0 auto 0 auto;
 }
 
+.row {
+  text-align: center;
+}
 
-/*.currentAnimal {
-  
-
-}*/
+.welcome {
+  text-align: left;
+}
 
 .currentNumbers {
-  font-size: 400%;
-  text-align: center;
+  font-size: 1000%;
+/*  text-align: center;*/
 }

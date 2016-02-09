@@ -1,5 +1,5 @@
 Images = new Mongo.Collection("images");
-Numbesr = new Mongo.Collection("numbers");
+Numbers = new Mongo.Collection("numbers");
 
 if (Meteor.isClient) {
   Meteor.subscribe("images");
@@ -11,49 +11,41 @@ if (Meteor.isClient) {
         // ANIMALS
         var gameCategory = Session.get("gameCategory");
 
-        var array = Images.find({category: gameCategory, exclude: false}).fetch();
-        console.log("array", array.length, array);
-        var randomIndex = Math.floor( Math.random() * array.length );
-        var currentImageSRC = array[randomIndex];
+        var imagesArray = Images.find({category: gameCategory, exclude: false}).fetch();
+        // console.log("array", imagesArray.length, imagesArray);
+        var randomIndex = Math.floor( Math.random() * imagesArray.length );
+        var currentImageSRC = imagesArray[randomIndex];
 
-        // if (currentImageSRC) {
-            // console.log("Step 1 inside click next", currentImageSRC);
-            Meteor.call("excludeImage", currentImageSRC);
-            // console.log("Step 2 inside click next", currentImageSRC);
-            Session.set("currentImage", currentImageSRC);
-            // console.log("Step 3 inside click next", currentImageSRC);
-
-
-        // NUMBERS
-        var N = 76;
-        var bingoNumbers = Array.apply(null, {length: N}).map(Number.call, Number);
-        bingoNumbers.shift();
-        console.log("bingoNumbers", bingoNumbers);
-
-        randomIndex = Math.floor( Math.random() * bingoNumbers.length );
-        var firstNumber = bingoNumbers[randomIndex];
-
-        console.log("firstNumber", firstNumber);
-        var index = bingoNumbers.indexOf(firstNumber);
-        bingoNumbers.splice(index, 1);
+        // console.log("Step 1 inside click next", currentImageSRC);
+        Meteor.call("excludeImage", currentImageSRC);
+        // console.log("Step 2 inside click next", currentImageSRC);
+        Session.set("currentImage", currentImageSRC);
+        // console.log("Step 3 inside click next", currentImageSRC);
 
 
-        randomIndex = Math.floor( Math.random() * bingoNumbers.length );
-        var secondNumber = bingoNumbers[randomIndex];
+        // NUMBERS FROM DATABASE
+        var numbersArray = Numbers.find({exclude: false}).fetch();
+        // console.log("numbersArray", numbersArray);
 
-        console.log("secondNumber", secondNumber);
-        index = bingoNumbers.indexOf(secondNumber);
-        bingoNumbers.splice(index, 1);
-        console.log("bingoNumbersAfter", bingoNumbers);
+        var randomNumbersIndex = Math.floor( Math.random() * numbersArray.length );
+        var firstNumber = numbersArray[randomNumbersIndex];
+        // console.log("firstNumber", firstNumber);
+        // console.log("numbersArray length", numbersArray.length);
+        Meteor.call("excludeNumber", firstNumber);
+
+
+        numbersArray = Numbers.find({exclude: false}).fetch();
+        randomNumbersIndex = Math.floor( Math.random() * numbersArray.length );
+        var secondNumber = numbersArray[randomNumbersIndex];
+        // console.log("secondNumber", secondNumber);
+        // console.log("numbersArray length", numbersArray.length);
+        Meteor.call("excludeNumber", secondNumber);
 
         Session.set("firstNumber", firstNumber);
         Session.set("secondNumber", secondNumber);
 
-        Session.set("bingoNumbers", bingoNumbers);
-        console.log(Session.get("bingoNumbers"));
-
         return currentImageSRC, firstNumber, secondNumber;
-        // }
+
         }
     });
 
@@ -109,9 +101,11 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code to run on server at startup
-    console.log("resettingImageDatabase");
-    Meteor.call("resetImageDatabase");
+    // console.log("resettingDatabases");
+    Meteor.call("resetImagesDatabase");
+    Meteor.call("resetNumbersDatabase");
     Meteor.call("insertImages");
+    Meteor.call("insertNumbers");
 
   });
 }
