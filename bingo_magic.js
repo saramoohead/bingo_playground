@@ -1,9 +1,23 @@
 Images = new Mongo.Collection("images");
 Numbers = new Mongo.Collection("numbers");
 
+Router.route("/", {
+    template: "welcome"
+});
+
+Router.route("bingo", {
+    template: "bingo_game"
+});
+
 if (Meteor.isClient) {
   Meteor.subscribe("images");
   Meteor.subscribe("numbers");
+
+    Template.welcome.events({
+        "click .lets_play": function () {
+            Meteor.call("resetExcludes");
+        }
+    });
 
     Template.next_call.events({
         "click .next_button": function() {
@@ -24,6 +38,7 @@ if (Meteor.isClient) {
 
 
         // NUMBERS FROM DATABASE
+        // First Number
         var numbersArray = Numbers.find({exclude: false}).fetch();
         // console.log("numbersArray", numbersArray);
 
@@ -33,7 +48,7 @@ if (Meteor.isClient) {
         // console.log("numbersArray length", numbersArray.length);
         Meteor.call("excludeNumber", firstNumber);
 
-
+        // Second Number
         numbersArray = Numbers.find({exclude: false}).fetch();
         randomNumbersIndex = Math.floor( Math.random() * numbersArray.length );
         var secondNumber = numbersArray[randomNumbersIndex];
@@ -86,11 +101,17 @@ if (Meteor.isClient) {
         }
     });
 
-    Template.called_animals.helpers({
+    Template.called.helpers({
         calledImages: function () {
             var calledImages = Images.find({ exclude: true });
             if (calledImages) {
                 return calledImages;
+            }
+        },
+        calledNumbers: function () {
+            var calledNumbers = Numbers.find({ exclude: true }, { sort: { number: 1 } });
+            if (calledNumbers) {
+                return calledNumbers;
             }
         }
     });

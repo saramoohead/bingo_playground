@@ -1,0 +1,25 @@
+<template name="bingo_game">
+
+  <div class="row">
+    <div class="col-lg-12">
+      {{> next_call}}
+      <h2>Now calling:</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+    {{> animal_bingo}}
+    </div>
+    {{> numbers_bingo}}
+  </div>
+
+  <div class="row">
+    {{> new_game}}
+  </div>
+
+  <div class="row">
+    {{> called}}
+  </div>
+
+</template>
