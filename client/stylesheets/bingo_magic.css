@@ -17,6 +17,7 @@ body {
 
 .row {
   text-align: center;
+  min-height: 100px;
 }
 
 .welcome {
@@ -32,3 +33,7 @@ body {
   font-size: 250%;
 /*  text-align: center;*/
 }
+
+/*.calledAnimals {
+  height: 10%;
+}*/

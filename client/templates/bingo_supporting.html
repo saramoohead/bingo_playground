@@ -27,10 +27,10 @@
   <template name="called">
     <h2>Already called:</h2>
     <div class="col-md-6">
-      <div class="calledAnimals">
+      <div>
         <ul>
           {{#each calledImages}}
-            <li>{{{imageSRC}}}</li>
+            <li class="calledAnimals">{{{imageSRC}}}</li>
           {{/each}}
         </ul>
       </div>
