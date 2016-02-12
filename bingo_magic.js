@@ -25,31 +25,35 @@ if (Meteor.isClient) {
 
     Template.boards.events({
         "click .make_board": function () {
-            var selectedImages = [];
+            var selectedImages = []; //Meteor.call("buildBoard");
+            var usedImageIds = [];
 
-            var possibleImages = Images.find().fetch();
-            console.log("possibleImages", possibleImages);
-            var imageIdx = Math.floor( Math.random() * possibleImages.length );
-            var image = possibleImages[imageIdx];
-            selectedImages.push(image);
-            console.log("imageIdx", imageIdx);
-            console.log("image", image);
+            for (var i=0; i<25; i++) {
+                var possibleImages = Images.find({_id: {$nin: usedImageIds}}).fetch();
+                var imageId = Math.floor( Math.random() * possibleImages.length );
+                var image = possibleImages[imageId];
 
-            imageIdx = Math.floor( Math.random() * possibleImages.length );
-            image = possibleImages[imageIdx];
-            selectedImages.push(image);
-            console.log("imageIdx", imageIdx);
-            console.log("image", image);
+                selectedImages.push(image);
+                usedImageIds.push(image._id);
+                console.log("image", imageId, image);
+                console.log("usedImageIds", usedImageIds);
+
+                // Session.set("selectedImages", selectedImages);
+                // console.log("sessionImages");
+                // console.log(Session.get("selectedImages"));
+            }
+
             console.log("selectImages", selectedImages);
-            Session.set("boardImages", selectedImages);
+            Session.set("selectedImages", selectedImages);
             console.log("sessionImages");
-            console.log(Session.get("boardImages"));
+            console.log(Session.get("selectedImages"));
+
         }
     });
 
     Template.boards.helpers({
         boardImages: function () {
-            var boardImages = Session.get("boardImages");
+            var boardImages = Session.get("selectedImages");
             return boardImages;
         }
     });
