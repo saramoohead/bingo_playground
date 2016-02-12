@@ -1,0 +1,21 @@
+<template name="boards">
+  <button class="btn-success btn-lg make_board">Make Board</button>
+  <div class="row">
+    <div class="bingoSquare">
+      <ul>
+        {{#each boardImages}}
+            {{{imageSRC}}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+      <div>
+        <ul>
+          {{#each boardImages}}
+            <li class="calledAnimals">{{{imageSRC}}}</li>
+          {{/each}}
+        </ul>
+      </div>
+
+</template>

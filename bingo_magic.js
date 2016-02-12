@@ -9,6 +9,10 @@ Router.route("bingo", {
     template: "bingo_game"
 });
 
+Router.route("boards", {
+    template: "boards"
+});
+
 if (Meteor.isClient) {
   Meteor.subscribe("images");
   Meteor.subscribe("numbers");
@@ -19,100 +23,34 @@ if (Meteor.isClient) {
         }
     });
 
-    Template.next_call.events({
-        "click .next_button": function() {
+    Template.boards.events({
+        "click .make_board": function () {
+            var selectedImages = [];
 
-        // ANIMALS
-        var gameCategory = Session.get("gameCategory");
+            var possibleImages = Images.find().fetch();
+            console.log("possibleImages", possibleImages);
+            var imageIdx = Math.floor( Math.random() * possibleImages.length );
+            var image = possibleImages[imageIdx];
+            selectedImages.push(image);
+            console.log("imageIdx", imageIdx);
+            console.log("image", image);
 
-        var imagesArray = Images.find({category: gameCategory, exclude: false}).fetch();
-        // console.log("array", imagesArray.length, imagesArray);
-        var randomIndex = Math.floor( Math.random() * imagesArray.length );
-        var currentImageSRC = imagesArray[randomIndex];
-
-        // console.log("Step 1 inside click next", currentImageSRC);
-        Meteor.call("excludeImage", currentImageSRC);
-        // console.log("Step 2 inside click next", currentImageSRC);
-        Session.set("currentImage", currentImageSRC);
-        // console.log("Step 3 inside click next", currentImageSRC);
-
-
-        // NUMBERS FROM DATABASE
-        // First Number
-        var numbersArray = Numbers.find({exclude: false}).fetch();
-        // console.log("numbersArray", numbersArray);
-
-        var randomNumbersIndex = Math.floor( Math.random() * numbersArray.length );
-        var firstNumber = numbersArray[randomNumbersIndex];
-        // console.log("firstNumber", firstNumber);
-        // console.log("numbersArray length", numbersArray.length);
-        Meteor.call("excludeNumber", firstNumber);
-
-        // Second Number
-        numbersArray = Numbers.find({exclude: false}).fetch();
-        randomNumbersIndex = Math.floor( Math.random() * numbersArray.length );
-        var secondNumber = numbersArray[randomNumbersIndex];
-        // console.log("secondNumber", secondNumber);
-        // console.log("numbersArray length", numbersArray.length);
-        Meteor.call("excludeNumber", secondNumber);
-
-        Session.set("firstNumber", firstNumber);
-        Session.set("secondNumber", secondNumber);
-
-        return currentImageSRC, firstNumber, secondNumber;
-
+            imageIdx = Math.floor( Math.random() * possibleImages.length );
+            image = possibleImages[imageIdx];
+            selectedImages.push(image);
+            console.log("imageIdx", imageIdx);
+            console.log("image", image);
+            console.log("selectImages", selectedImages);
+            Session.set("boardImages", selectedImages);
+            console.log("sessionImages");
+            console.log(Session.get("boardImages"));
         }
     });
 
-    Template.new_game.events({
-        "click .new_farm": function() {
-            Meteor.call("resetExcludes");
-            Session.set("gameCategory", "Farm");
-        },
-        "click .new_jungle": function() {
-            Meteor.call("resetExcludes");
-            Session.set("gameCategory", "Jungle");
-        },
-        "click .new_sweets": function() {
-            Meteor.call("resetExcludes");
-            Session.set("gameCategory", "Sweets");
-        }
-    });
-
-    Template.animal_bingo.helpers({
-        currentImageSRC: function () {
-
-            var displayImage = Session.get("currentImage");
-            return displayImage;
-
-        }
-    });
-
-    Template.numbers_bingo.helpers({
-        firstNumber: function () {
-
-            var firstNumber = Session.get("firstNumber");
-            return firstNumber;
-
-        },
-        secondNumber: function () {
-            var secondNumber = Session.get("secondNumber");
-            return secondNumber;
-        }
-    });
-
-    Template.called.helpers({
-        calledImages: function () {
-            var calledImages = Images.find({ exclude: true });
-            if (calledImages) {
-                return calledImages;
-            }
-        },
-        calledNumbers: function () {
-            var calledNumbers = Numbers.find({ exclude: true }, { sort: { number: 1 } });
-            if (calledNumbers) {
-                return calledNumbers;
-            }
+    Template.boards.helpers({
+        boardImages: function () {
+            var boardImages = Session.get("boardImages");
+            return boardImages;
         }
     });
 
