@@ -4,7 +4,7 @@
   </template>
 
   <template name="animal_bingo">
-    <div class="currentAnimal">{{{currentImageSRC.imageSRC}}}</div>
+    <div class="currentAnimal"><img src="{{currentImageSRC.imageSRC}}"></div>
   </template>
 
   <template name="numbers_bingo">
@@ -30,7 +30,7 @@
       <div>
         <ul>
           {{#each calledImages}}
-            <li class="calledAnimals">{{{imageSRC}}}</li>
+            <li class="calledAnimals"><img src="{{imageSRC}}"></li>
           {{/each}}
         </ul>
       </div>

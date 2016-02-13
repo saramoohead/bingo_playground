@@ -25,7 +25,7 @@ if (Meteor.isClient) {
 
     Template.boards.events({
         "click .make_board": function () {
-            var selectedImages = []; //Meteor.call("buildBoard");
+            var selectedImages = [];
             var usedImageIds = [];
 
             for (var i=0; i<25; i++) {
@@ -35,19 +35,9 @@ if (Meteor.isClient) {
 
                 selectedImages.push(image);
                 usedImageIds.push(image._id);
-                console.log("image", imageId, image);
-                console.log("usedImageIds", usedImageIds);
-
-                // Session.set("selectedImages", selectedImages);
-                // console.log("sessionImages");
-                // console.log(Session.get("selectedImages"));
             }
-
-            console.log("selectImages", selectedImages);
+            
             Session.set("selectedImages", selectedImages);
-            console.log("sessionImages");
-            console.log(Session.get("selectedImages"));
-
         }
     });
 

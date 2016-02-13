@@ -1,12 +1,12 @@
 <template name="boards">
   <button class="btn-success btn-lg make_board">Make Board</button>
   <div class="row">
-    <div class="bingoSquare">
-      <ul>
+    <div class="bingoBoard">
+
         {{#each boardImages}}
-            {{{imageSRC}}}
+            <div class="bingoSquare"><img src="{{imageSRC}}"></div>
         {{/each}}
-      </ul>
+
     </div>
   </div>
 </template>
