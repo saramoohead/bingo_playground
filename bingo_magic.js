@@ -28,7 +28,7 @@ if (Meteor.isClient) {
             var selectedImages = [];
             var usedImageIds = [];
 
-            for (var i=0; i<25; i++) {
+            for (var i=0; i<5; i++) {
                 var possibleImages = Images.find({_id: {$nin: usedImageIds}}).fetch();
                 var imageId = Math.floor( Math.random() * possibleImages.length );
                 var image = possibleImages[imageId];
@@ -36,7 +36,7 @@ if (Meteor.isClient) {
                 selectedImages.push(image);
                 usedImageIds.push(image._id);
             }
-            
+
             Session.set("selectedImages", selectedImages);
         }
     });
