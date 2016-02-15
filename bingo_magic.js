@@ -24,11 +24,23 @@ if (Meteor.isClient) {
     });
 
     Template.boards.events({
+        "submit .number_of_boards": function(event) {
+            event.preventDefault();
+
+            var numberOfBoards = event.target.numberOfBoards.value;
+
+            Session.set("numberOfBoards", numberOfBoards);
+
+            event.target.numberOfBoards.value = "";
+        },
+
         "click .make_board": function () {
+            var numberOfBoards = Session.get("numberOfBoards");
+
             var selectedImages = [];
             var usedImageIds = [];
 
-            for (var i=0; i<5; i++) {
+            for (var i=0; i<25; i++) {
                 var possibleImages = Images.find({_id: {$nin: usedImageIds}}).fetch();
                 var imageId = Math.floor( Math.random() * possibleImages.length );
                 var image = possibleImages[imageId];
@@ -36,6 +48,8 @@ if (Meteor.isClient) {
                 selectedImages.push(image);
                 usedImageIds.push(image._id);
             }
+
+            // TODO: manipulate selectedImages for position 12 to be free space
 
             Session.set("selectedImages", selectedImages);
         }

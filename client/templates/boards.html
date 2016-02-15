@@ -1,12 +1,14 @@
 <template name="boards">
+  <div class="row">
+    Print out your boards.<br>
+    <form class="number_of_boards">
+      How many game boards do you need? <input type="text" name="numberOfBoards">
+    </form>
+  </div>
   <button class="btn-success btn-lg make_board">Make Board</button>
   <div class="row">
-    <div class="col-sm-">
-
-        {{#each boardImages}}
-            <div class="col-sm-5ths"><img src="{{imageSRC}}"></div>
-        {{/each}}
-
-    </div>
+    {{#each boardImages}}
+      <div class="col-sm-5ths"><img class="boardSquare" src="{{imageSRC}}"></div>
+    {{/each}}
   </div>
 </template>

@@ -39,6 +39,11 @@ body {
 /*  text-align: center;*/
 }
 
+.boardSquare {
+  height: 200px;
+  width: 200px;
+}
+
 .col-xs-5ths, .col-sm-5ths, .col-md-5ths, .col-lg-5ths { 
   position: relative; 
   min-height: 1px; 
