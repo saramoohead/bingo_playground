@@ -31,6 +31,8 @@ if (Meteor.isClient) {
 
             var numberOfBoards = event.target.numberOfBoards.value;
 
+            console.log("numberOfBoardsInSubmitEvent", numberOfBoards);
+
             Session.set("numberOfBoards", numberOfBoards);
 
             event.target.numberOfBoards.value = "";
@@ -41,23 +43,28 @@ if (Meteor.isClient) {
 
             var numberOfBoards = Session.get("numberOfBoards");
 
+            console.log("numberOfBoardsInsideMakeBoard", numberOfBoards);
+
+            for (var n=0; n<numberOfBoards; n++) {
+
             var selectedImages = [];
             var usedImageIds = [];
 
-            for (var i=0; i<25; i++) {
-                var possibleImages = Images.find({_id: {$nin: usedImageIds}}).fetch();
-                var imageId = Math.floor( Math.random() * possibleImages.length );
-                var image = possibleImages[imageId];
+                for (var i=0; i<25; i++) {
+                    var possibleImages = Images.find({_id: {$nin: usedImageIds}}).fetch();
+                    var imageId = Math.floor( Math.random() * possibleImages.length );
+                    var image = possibleImages[imageId];
 
-                selectedImages.push(image);
-                usedImageIds.push(image._id);
+                    selectedImages.push(image);
+                    usedImageIds.push(image._id);
+                }
+
+            Meteor.call("saveBoard", selectedImages);
+
             }
 
             // TODO: manipulate selectedImages for position 12 to be free space
 
-            Meteor.call("saveBoard", selectedImages);
-
-            Session.set("selectedImages", selectedImages);
         }
     });
 
