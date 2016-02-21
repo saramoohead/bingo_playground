@@ -1,5 +1,6 @@
 Images = new Mongo.Collection("images");
 Numbers = new Mongo.Collection("numbers");
+Boards = new Mongo.Collection("boards");
 
 Router.route("/", {
     template: "welcome"
@@ -16,6 +17,7 @@ Router.route("boards", {
 if (Meteor.isClient) {
   Meteor.subscribe("images");
   Meteor.subscribe("numbers");
+  Meteor.subscribe("boards");
 
     Template.welcome.events({
         "click .lets_play": function () {
@@ -35,6 +37,8 @@ if (Meteor.isClient) {
         },
 
         "click .make_board": function () {
+            Meteor.call("resetBoardsDatabase");
+
             var numberOfBoards = Session.get("numberOfBoards");
 
             var selectedImages = [];
@@ -51,14 +55,21 @@ if (Meteor.isClient) {
 
             // TODO: manipulate selectedImages for position 12 to be free space
 
+            Meteor.call("saveBoard", selectedImages);
+
             Session.set("selectedImages", selectedImages);
         }
     });
 
     Template.boards.helpers({
         boardImages: function () {
-            var boardImages = Session.get("selectedImages");
-            return boardImages;
+
+            var boardImages = Boards.find().fetch();
+
+            if (boardImages) {
+                console.log("boardImages", boardImages);
+                return boardImages;
+            }
         }
     });
 
@@ -71,6 +82,7 @@ if (Meteor.isServer) {
     // console.log("resettingDatabases");
     Meteor.call("resetImagesDatabase");
     Meteor.call("resetNumbersDatabase");
+    Meteor.call("resetBoardsDatabase");
     Meteor.call("insertImages");
     Meteor.call("insertNumbers");
 

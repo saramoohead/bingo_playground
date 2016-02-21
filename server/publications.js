@@ -4,3 +4,6 @@ Meteor.publish("images", function () {
 Meteor.publish("numbers", function () {
     return Numbers.find();
 });
+Meteor.publish("boards", function () {
+    return Boards.find();
+});
