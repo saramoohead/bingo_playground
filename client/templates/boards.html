@@ -10,7 +10,10 @@
     {{#each boardImages}}
       <div class="row board">
         {{#each this.board}}
-          <div class="col-sm-5ths"><img class="boardSquare" width="150" height="150" src="{{imageSRC}}"></div>
+          <div class="col-sm-5ths boardSquare">
+            <img class="boardImage" height="140" width="140" src="{{imageSRC}}"><br />
+            {{imageName}}
+          </div>
         {{/each}}
       </div>
     {{/each}}
