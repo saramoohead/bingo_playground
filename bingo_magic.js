@@ -86,7 +86,7 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code to run on server at startup
-    // console.log("resettingDatabases");
+    console.log("resettingDatabases");
     Meteor.call("resetImagesDatabase");
     Meteor.call("resetNumbersDatabase");
     Meteor.call("resetBoardsDatabase");

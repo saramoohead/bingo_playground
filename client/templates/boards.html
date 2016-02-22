@@ -6,11 +6,13 @@
     </form>
   </div>
   <button class="btn-success btn-lg make_board">Make Board</button>
-  <div class="row">
+<!--   <div class="row"> -->
     {{#each boardImages}}
-      {{#each this.board}}
-      <div class="col-sm-5ths"><img class="boardSquare" src="{{imageSRC}}"></div>
-      {{/each}}
+      <div class="row board">
+        {{#each this.board}}
+          <div class="col-sm-5ths"><img class="boardSquare" width="150" height="150" src="{{imageSRC}}"></div>
+        {{/each}}
+      </div>
     {{/each}}
-  </div>
+  <!-- </div> -->
 </template>
