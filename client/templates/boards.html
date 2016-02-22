@@ -1,17 +1,17 @@
 <template name="boards">
-  <div class="row">
+  <div class="row no-print">
     Print out your boards.<br>
     <form class="number_of_boards">
       How many game boards do you need? <input type="text" name="numberOfBoards">
     </form>
   </div>
-  <button class="btn-success btn-lg make_board">Make Board</button>
+  <button class="btn-success btn-lg make_board no-print">Make Board</button>
 <!--   <div class="row"> -->
     {{#each boardImages}}
       <div class="row board">
         {{#each this.board}}
           <div class="col-sm-5ths boardSquare">
-            <img class="boardImage" height="140" width="140" src="{{imageSRC}}"><br />
+            <img src="{{imageSRC}}"><br />
             {{imageName}}
           </div>
         {{/each}}
