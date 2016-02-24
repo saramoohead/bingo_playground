@@ -20,7 +20,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("boards");
 
     Template.welcome.events({
-        "click .lets_play": function () {
+        "click .play_bingo": function () {
             Meteor.call("resetExcludes");
         }
     });
@@ -77,7 +77,16 @@ if (Meteor.isClient) {
                 console.log("boardImages", boardImages);
                 return boardImages;
             }
+        },
+        pageBreak: function (index) {
+
+            if (index % 2 !== 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
+
     });
 
 }
@@ -86,7 +95,7 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code to run on server at startup
-    console.log("resettingDatabases");
+    // console.log("resettingDatabases");
     Meteor.call("resetImagesDatabase");
     Meteor.call("resetNumbersDatabase");
     Meteor.call("resetBoardsDatabase");

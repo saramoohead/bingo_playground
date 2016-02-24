@@ -1,5 +1,9 @@
 /* CSS declarations go here */
 
+@media all {
+  .page-break { display: none; }
+}
+
 @media screen {
 
   body {
@@ -34,12 +38,10 @@
 
   .currentNumbers {
     font-size: 1500%;
-  /*  text-align: center;*/
   }
 
   .numberCall {
     font-size: 250%;
-  /*  text-align: center;*/
   }
 
   .boardSquare {
@@ -66,6 +68,11 @@
     border-width: 10px;
   }
 
+  .welcome_buttons img {
+    height: 350px;
+    width: 350px;
+  }
+
   .col-xs-5ths, .col-sm-5ths, .col-md-5ths, .col-lg-5ths { 
     position: relative; 
     min-height: 1px; 
@@ -73,6 +80,16 @@
     float: left;
   }
 
+}
+
+/* All margins set to 2cm */
+@page { 
+  margin: 2cm;
+}
+
+/* Top margin on first page 10cm */
+@page :first {
+  margin-top: .5cm
 }
 
 @media print {
@@ -90,8 +107,8 @@
   }
 
   .boardSquare {
-    height: 90px;
-    width: 90px;
+    height: 80px;
+    width: 80px;
     padding-top: 5px;
     border-style: solid;
     border-width: 1px;
@@ -108,10 +125,15 @@
   }
 
   .board {
-    width: 450px;
-    margin: 15px;
+    width: 400px;
+    margin: 50px;
     border-style: ridge;
     border-width: 10px;
+  }
+
+  .page-break { 
+    display: block; 
+    page-break-before: always; 
   }
 
   .col-xs-5ths, .col-sm-5ths, .col-md-5ths, .col-lg-5ths { 
