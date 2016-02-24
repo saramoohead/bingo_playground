@@ -4,7 +4,6 @@
 
   <div class="row">
     <div class="col-lg-12">
-      {{> next_call}}
       <h2>Now calling:</h2>
     </div>
   </div>
@@ -17,7 +16,14 @@
   </div>
 
   <div class="row">
-    {{> new_game}}
+    <div class="col-lg-12">
+      <div class="row">
+        {{> next_call}}
+      </div>
+      <div class="row">
+        {{> new_game}}
+      </div>
+    </div>
   </div>
 
   <div class="row">

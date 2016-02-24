@@ -1,10 +1,9 @@
     Template.next_call.events({
         "click .next_button": function() {
 
-        // ANIMALS
-        var gameCategory = Session.get("gameCategory");
+        // IMAGES
 
-        var imagesArray = Images.find({category: gameCategory, exclude: false}).fetch();
+        var imagesArray = Images.find({exclude: false}).fetch();
         // console.log("array", imagesArray.length, imagesArray);
         var randomIndex = Math.floor( Math.random() * imagesArray.length );
         var currentImageSRC = imagesArray[randomIndex];

@@ -20,7 +20,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("boards");
 
     Template.welcome.events({
-        "click .play_bingo": function () {
+        "click .call_bingo": function () {
             Meteor.call("resetExcludes");
         }
     });
