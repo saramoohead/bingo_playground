@@ -7,7 +7,7 @@
 @media screen {
 
   body {
-    font-family: "helvetica neue", Arial, sans-serif;
+    font-family: "superclarendon", "helvetica neue", Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
 
@@ -20,11 +20,20 @@
     color: 444444;
     width: 1200px;
     margin: 0 auto 0 auto;
+
   }
 
   .row {
     text-align: center;
     min-height: 100px;
+  }
+
+  .main-title a {
+    color: #bed94a;
+  }
+
+  .main-title a:hover { 
+    text-decoration: none; 
   }
 
   .welcome {
