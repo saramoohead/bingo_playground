@@ -22,6 +22,18 @@ if (Meteor.isClient) {
     Template.welcome.events({
         "click .call_bingo": function () {
             Meteor.call("resetExcludes");
+            Session.set("currentImage", "");
+            Session.set("firstNumber", "");
+            Session.set("secondNumber", "");
+        }
+    });
+
+    Template.bingo_game.events({
+        "click .call_bingo": function () {
+            Meteor.call("resetExcludes");
+            Session.set("currentImage", "");
+            Session.set("firstNumber", "");
+            Session.set("secondNumber", "");
         }
     });
 
