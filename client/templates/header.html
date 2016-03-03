@@ -1,7 +1,16 @@
 <template name="header">
   <div class="row no-print">
-    <div class="col-lg-12">
-      <h1 class="main-title rainbow"><a href='/'>FAMILY BINGO</a></h1>
+    <div class="col-sm-4"> 
     </div>
+    <div class="col-sm-4"> 
+      <h1 class="main-title">
+        <a href='/'>FAMILY BINGO</a>
+      </h1>  
+    </div>
+    <div class="col-sm-4 collapse navbar-collapse" id="navigation">      
+      <ul class="nav navbar-nav navbar-right">
+          {{> loginButtons}}  
+      </ul>      
+    </div>    
   </div>
 </template>

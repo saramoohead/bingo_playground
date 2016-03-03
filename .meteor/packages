@@ -25,3 +25,5 @@ cfs:s3
 raix:ui-dropped-event
 chrismbeckett:toastr
 reactive-var
+accounts-password
+ian:accounts-ui-bootstrap-3
