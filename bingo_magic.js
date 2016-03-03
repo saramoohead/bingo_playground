@@ -14,6 +14,10 @@ Router.route("boards", {
     template: "boards"
 });
 
+Router.route("upload", {
+    template: "upload"
+});
+
 if (Meteor.isClient) {
   Meteor.subscribe("images");
   Meteor.subscribe("numbers");

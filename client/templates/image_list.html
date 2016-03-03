@@ -1,0 +1,11 @@
+<template name="image_list"> 
+  <div class="row board">
+    {{#each images2}}
+      <div class="col-sm-5ths boardSquare">
+        <a href="{{url}}" target="_blank" class="thumbnail">
+          <img src="{{url}}" />
+        </a>
+      </div>
+    {{/each}}
+  </div>
+</template>

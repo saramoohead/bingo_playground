@@ -19,3 +19,9 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 insecure                # Allow all DB writes from clients (for prototyping)
 twbs:bootstrap
 iron:router
+cfs:standard-packages
+cfs:gridfs
+cfs:s3
+raix:ui-dropped-event
+chrismbeckett:toastr
+reactive-var

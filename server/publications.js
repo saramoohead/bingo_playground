@@ -7,3 +7,8 @@ Meteor.publish("numbers", function () {
 Meteor.publish("boards", function () {
     return Boards.find();
 });
+Meteor.publish('images2', function(limit) {
+    return Images2.find({}, {
+        limit: limit
+    });
+});
