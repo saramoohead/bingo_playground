@@ -5,10 +5,10 @@
   <div class="row no-print">
     Make and print out your boards.<br>
     <form class="number_of_boards">
-      How many game boards do you need? <input type="text" name="numberOfBoards">
+      How many game boards do you need? <input type="text" name="number_of_boards">
+      <input type="submit" class="btn-success btn-lg make_board no-print" value = "Make Board">
     </form>
   </div>
-  <button class="btn-success btn-lg make_board no-print">Make Board</button>
     {{#each boardImages}}
       <div class="row board">
         {{#each this.board}}

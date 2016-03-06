@@ -7,7 +7,7 @@
 @media screen {
 
   body {
-    font-family: "superclarendon", "helvetica neue", Arial, sans-serif;
+    font-family: "helvetica neue", Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
 
@@ -23,10 +23,31 @@
 
   }
 
+  h1 {
+    font-family: "superclarendon", "helvetica neue", Arial, sans-serif;
+    padding-bottom:2px;
+    border-bottom:1px solid #919699;
+  }
+
+  h2 {
+    font-family: "superclarendon", "helvetica neue", Arial, sans-serif;
+    padding-bottom:2px;
+  }
+
+  p {
+    text-align: left;
+  }
+
   .row {
     text-align: center;
     min-height: 100px;
   }
+
+  .col-centered{
+    float: none;
+    margin: 0 auto;
+  }
+
 
   .main-title a {
     color: #bed94a;

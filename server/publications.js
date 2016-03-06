@@ -12,3 +12,10 @@ Meteor.publish('images2', function(limit) {
         limit: limit
     });
 });
+Meteor.publish("organisations", function () {
+  return Meteor.users.find({}, {
+    fields: {
+      'username': 1,
+      'organisations': 1}
+  });
+});

@@ -1,14 +1,30 @@
 <template name="upload">
   {{> header}}
-  <div class="row">
-    <div class="col-md-6">
-      <div id="dropzone" class="dropzone">
-        <div class="well well-drop-zone">
-          Drop file(s) here to upload
+
+  {{#if organisationSelected}}
+    <div class="row">
+      <div class="col-md-6 col-centered">
+        <div id="dropzone" class="dropzone">
+          <div class="well well-drop-zone">
+            Drop file(s) here to upload
+          </div>
         </div>
       </div>
     </div>
-  </div>
   {{> image_list}}
+  {{else}}
+    <div class="row">
+      <div class="col-md-6 col-centered">
+      <p>To make sure your bingo square gets uploaded to the right game, get the organisation code from your host or ask for the invitation link. You do not need to sign up for an account to upload an image.</p>
+      <div>
+        <form class="organisation_code">
+          Organisation code: <input type="text" name="organisation_code">
+          <input type="submit" class="btn-success btn-lg no-print" value = "Submit">
+        </form>
+      </div>
+      <p>If you are hosting an event, sign up for an account to start your organisation.</p>
+      </div>
+    </div>
+  {{/if}}
 </template>
 
