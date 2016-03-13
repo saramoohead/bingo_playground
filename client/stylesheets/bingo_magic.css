@@ -1,36 +1,95 @@
 /* CSS declarations go here */
 
+
+/* My styles */
 @media all {
-  .page-break { display: none; }
+  .page-break { display: none; } /*Page breaks for print optimisation, not displayed*/
 }
 
 @media screen {
 
+  html {
+    height: 100%;
+  }
+  /* Need for both html and body*/
+
+  @font-face {
+    font-family: LiberationSans;
+    src: url("/fonts/LiberationSans-Regular.ttf");
+  }
+
   body {
-    font-family: "helvetica neue", Arial, sans-serif;
+    font-family: LiberationSans, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
 
-    background-image: url(../images/background.png);
+    height: 100%;
+
+    color: #7d7d7d;
+    width: 1200px;
+    margin: 0 auto 0 auto;
+  }
+
+  header, section {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    position: relative; /* Everything that is absolute stays within parent*/
+  }
 
-    color: 444444;
-    width: 1200px;
-    margin: 0 auto 0 auto;
+  .full {
+    height: 100%;
+  }
+
+  .welcome {
+    background: #bed94a;
+  }
+
+  .welcome ul {
+    text-align: justify;
+  }
+ 
+  .welcome ul:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+  }
+  .welcome ul:before {
+      content: '';
+      display: block;
+      margin-top: -1.25em;
+  }
+  .welcome li {
+      display: inline-block;
+      margin-right: -.25em;
+      position: relative;
+      top: 1.25em;
+  }
+
+  .upload {
+
+  }
+
+  .image_list {
+
+  }
+
+  .make_boards {
+
+  }
+
+  .call_game {
 
   }
 
   h1 {
-    font-family: "superclarendon", "helvetica neue", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     padding-bottom:2px;
-    border-bottom:1px solid #919699;
   }
 
   h2 {
-    font-family: "superclarendon", "helvetica neue", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     padding-bottom:2px;
   }
 
@@ -40,7 +99,7 @@
 
   .row {
     text-align: center;
-    min-height: 100px;
+    min-height: 50px;
   }
 
   .col-centered{
@@ -57,9 +116,7 @@
     text-decoration: none; 
   }
 
-  .welcome {
-    text-align: left;
-  }
+
 
   .calledAnimals {
     height: 100px;

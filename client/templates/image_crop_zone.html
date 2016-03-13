@@ -1,0 +1,43 @@
+<template name="image_crop_zone">
+  <row>
+    <div class="col-md-6 col-centered">
+      Image Crop Zone
+
+    <form id="jcrop-form" enctype="multipart/form-data" method="post" action="">
+
+        <div class="jcrop-select">
+            <input type="file" name="image_file" id="jcrop-file" />
+        </div>
+
+        <div id="jcrop-error"></div>
+
+        <div id="jcrop-step2" style="display:none">
+
+            <h2>Please select a crop area</h2>
+
+            <img id="jcrop-preview" />
+
+            <canvas id="jcrop-canvas" style="width:150px;height:150px;overflow:hidden;"></canvas>
+
+            <div class="{{state}} {{color}}" data-percent="{{progress}}">
+                <div class="bar" style="width:{{progress}}%;">
+                    <div class="progress">{{progress}}%</div>
+                </div>
+                <div class="label">{{label}}</div>
+            </div>
+
+            <button class="{{loading}}" type="submit">Save Your Photo</button>
+
+        </div>
+    </form>
+
+        <form class="board_image_upload">
+        <p>One or two word description of the image: <input type="text" name="image_description" value="i.e. dragon, apple, book"></p>
+        <p>Optional image credit (not your real name):<input type="text" name="image_credit" value="i.e. squidman, craftyk, eyeofthetiger"></p>
+        <input type="submit" class="btn=success btn-lg" value="Submit">
+      </form>
+
+    </div>
+  </row>
+</template>
+

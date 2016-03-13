@@ -1,7 +1,8 @@
 <template name="image_list"> 
-  <div class="row board">
+  <h2>{{organisationSelected}}'s images:</h2>
+  <div class="row">
     {{#each images2}}
-      <div class="col-sm-5ths boardSquare">
+      <div class="col-sm-5ths">
         <a href="{{url}}" target="_blank" class="thumbnail">
           <img src="{{url}}" />
         </a>

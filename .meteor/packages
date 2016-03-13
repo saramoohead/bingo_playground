@@ -27,3 +27,5 @@ chrismbeckett:toastr
 reactive-var
 accounts-password
 ian:accounts-ui-bootstrap-3
+cfs:autoform
+mrt:jquery-jcrop

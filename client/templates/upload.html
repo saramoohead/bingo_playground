@@ -4,15 +4,17 @@
   {{#if organisationSelected}}
     <div class="row">
       <div class="col-md-6 col-centered">
-        <p>You are uploading to {{organisationSelected}}.</p>
-        <div id="dropzone" class="dropzone">
-          <div class="well well-drop-zone">
-            Drop file(s) here to upload
-          </div>
-        </div>
+        <h2>You are uploading to {{organisationSelected}}.</h2>
+        <p>By uploading your image, you promise that this is your work and that you allow other people to use it on this site and in their bingo games.</p>
+        <p>Each submitted image needs approval by the host. Your host can only use 75 images in each game. For the best chance of getting your image featured in the game, make it really clear what it is. Outlines are good, with markers, and/or bright colours. Good luck!</p>
       </div>
+      {{> dropzone}}
     </div>
-  {{> image_list}}
+    {{> image_crop_zone}}
+    {{> image_list}}
+
+
+
   {{else}}
     <div class="row">
       <div class="col-md-6 col-centered">
