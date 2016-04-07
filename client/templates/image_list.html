@@ -1,12 +1,23 @@
 <template name="image_list"> 
-  <h2>{{organisationSelected}}'s images:</h2>
-  <div class="row">
-    {{#each images2}}
-      <div class="col-sm-5ths">
-        <a href="{{url}}" target="_blank" class="thumbnail">
-          <img src="{{url}}" />
-        </a>
-      </div>
-    {{/each}}
+  <div class="row full image_list">
+    {{#if organisationSelected}}
+      <h2>{{organisationSelected}}'s images:</h2>
+
+      {{#each images2}}
+        <div class="all-images col-sm-5ths">
+          <a href="{{url}}" target="_blank" class="thumbnail">
+            <img src="{{url}}" />
+          </a>
+          {{#if imageTitle}}
+          <p class="image_caption">{{imageTitle}} by {{imageCreator}}</p>
+          {{/if}}
+        </div>
+      {{/each}}
+
+    {{else}}
+      <h2>Enter a code to see your group's images.</h2>
+    {{/if}}
+
+
   </div>
 </template>

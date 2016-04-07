@@ -20,15 +20,18 @@ Template.image_list.rendered = function () {
 };
 
 Template.image_list.helpers({
+
     'images2': function() {
-        return Images2.find();
+
+        var organisation = Session.get("organisation");
+
+        return Images2.find({organisation: organisation});
     },
 
     organisationSelected: function () {
 
         var organisation = Session.get("organisation");
-
-        console.log("organisation session", organisation);
+        // console.log("organisation session", organisation);
 
         if (organisation) {
             console.log("organisation", organisation);

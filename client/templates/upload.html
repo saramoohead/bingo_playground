@@ -1,32 +1,42 @@
 <template name="upload">
-  {{> header}}
 
   {{#if organisationSelected}}
-    <div class="row">
-      <div class="col-md-6 col-centered">
+    <div class="row full upload">
+      <div class="col-md-6 col-centered middle">
         <h2>You are uploading to {{organisationSelected}}.</h2>
-        <p>By uploading your image, you promise that this is your work and that you allow other people to use it on this site and in their bingo games.</p>
-        <p>Each submitted image needs approval by the host. Your host can only use 75 images in each game. For the best chance of getting your image featured in the game, make it really clear what it is. Outlines are good, with markers, and/or bright colours. Good luck!</p>
+        <p>By uploading, you promise that the picture is your work and that you allow other people to use it for bingo. Clear and bright pictures are best!</p>
+      <!-- {{> dropzone}} -->
+        <div>
+          <form class="image-metadata">
+            <p>Step 1: Enter the title and creator initials.</p>
+            Short Picture Title (example: pig, rainbow, bicycle): <input type="text" name="image_title" maxlength="15">*<br />
+            Initials of Creator (example: ND, SOC, JJRM)<input type="text" name="image_creator" maxlength="6"><br />
+            <input type="submit" class="btn-success btn-lg no-print" value = "Submit">
+          </form>
+
+        {{#if titleSubmitted}}
+          <p>Upload your image {{titleSubmitted}}: </p>
+          {{> dropzone}}
+        {{else}}
+          {{> fakeDropzone}}
+        {{/if}}
+
+        </div>
       </div>
-      {{> dropzone}}
     </div>
-    {{> image_crop_zone}}
-    {{> image_list}}
-
-
 
   {{else}}
-    <div class="row">
-      <div class="col-md-6 col-centered">
-      <p>To make sure your bingo square gets uploaded to the right game, get the organisation code from your host or ask for the invitation link. You do not need to sign up for an account to upload an image.</p>
-      <div>
-        <form class="organisation_code">
-          Organisation code: <input type="text" name="organisation_code">
-          <input type="submit" class="btn-success btn-lg no-print" value = "Submit">
-        </form>
-      </div>
-      <p>If you are hosting an event, sign up for an account to start your organisation.</p>
-      </div>
+    <div class="row full upload">
+      <div class="col-md-6 col-centered middle">
+        <p>Get the organisation code from your host or ask for the invitation link. (You do not need to sign up for an account to upload an image.)</p>
+        <div>
+          <form class="organisation-code">
+            Organisation code: <input type="text" name="organisation_code">
+            <input type="submit" class="btn-success btn-lg no-print" value = "Submit">
+          </form>
+        </div>
+        <p>If you are hosting an event, sign up for an account to start your organisation.</p>
+        </div>
     </div>
   {{/if}}
 </template>

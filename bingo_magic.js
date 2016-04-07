@@ -3,7 +3,16 @@ Numbers = new Mongo.Collection("numbers");
 Boards = new Mongo.Collection("boards");
 
 Router.route("/", {
-    template: "welcome"
+    template: "main"
+});
+
+Router.route("upload", {
+    template: "upload",
+    onAfterAction: function () {
+        Tracker.afterFlush(function () {
+            $('html,body').scrollTop(3000);
+        });
+    }
 });
 
 Router.route("bingo", {
@@ -14,9 +23,7 @@ Router.route("boards", {
     template: "boards"
 });
 
-Router.route("upload", {
-    template: "upload"
-});
+
 
 if (Meteor.isClient) {
   Meteor.subscribe("images");
