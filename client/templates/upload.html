@@ -17,8 +17,18 @@
         {{#if titleSubmitted}}
           <p>Upload your image {{titleSubmitted}}: </p>
           {{> dropzone}}
-        {{else}}
+        {{else}} 
           {{> fakeDropzone}}
+        {{/if}}
+
+        {{#if imageJustUploaded}}
+          <p>Step 3, crop the image you uploaded. It's got to be a square to work with the bingo board:</p>
+          {{#each imageJustUploaded}}
+            <div class="thumbnail">
+              <img src="{{url}}" />
+            </div>
+            {{imageTitle}}
+          {{/each}}
         {{/if}}
 
         </div>

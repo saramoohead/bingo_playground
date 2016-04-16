@@ -6,7 +6,6 @@ Template.upload.events({
 
         event.target.organisation_code.value = "";
 
-        console.log("organisation_code", organisation_code);
 
         Session.set("organisation", organisation_code);
 
@@ -21,16 +20,12 @@ Template.upload.events({
         event.target.image_title.value = "";
         event.target.image_creator.value = "";
 
-        console.log("image_title", imageTitle);
-        console.log("image_creator", imageCreator);
-
         Session.set("imageTitle", imageTitle);
         Session.set("imageCreator", imageCreator);
 
     },
 
     'dropped #dropzone': function(e) {
-        console.log('dropped a file');
 
         // var user = Meteor.user();
         var organisation = Session.get("organisation");
@@ -50,6 +45,7 @@ Template.upload.events({
                     toastr.error("Upload failed... please try again.");
                 } else {
                     toastr.success('Upload succeeded!');
+                    Session.set("imageJustUploaded", 1);
                     Session.set("imageTitle", null);
                     Session.set("imageCreator", null);
                 }
@@ -65,7 +61,6 @@ Template.upload.helpers({
         var organisation = Session.get("organisation");
 
         if (organisation) {
-            console.log("organisation", organisation);
             return organisation;
         }
     },
@@ -76,6 +71,20 @@ Template.upload.helpers({
         if (imageTitle) {
             return imageTitle;
         }
+    },
+    imageJustUploaded: function () {
+
+        var organisation = Session.get("organisation");
+
+        var imageJustUploaded = Images2.find(
+                        {organisation: organisation},
+                        {
+                            sort: {uploadedAt: -1},
+                            limit: 1
+                        });
+
+        // console.log("imageJustUploaded", imageJustUploaded);
+        return imageJustUploaded;
     }
 
 });

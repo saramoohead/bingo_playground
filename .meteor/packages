@@ -32,3 +32,4 @@ standard-minifier-css
 standard-minifier-js
 cfs:graphicsmagick
 natestrauser:font-awesome
+jonblum:jquery-cropper

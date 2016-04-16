@@ -30,6 +30,8 @@ if (Meteor.isClient) {
   Meteor.subscribe("numbers");
   Meteor.subscribe("boards");
 
+    Session.set("organisation", "STJOHNS");
+
     Template.welcome.events({
         "click .call_bingo": function () {
             Meteor.call("resetExcludes");

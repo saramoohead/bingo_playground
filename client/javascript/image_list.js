@@ -25,8 +25,6 @@ Template.image_list.helpers({
 
         var organisation = Session.get("organisation");
 
-        console.log("images2", Images2.find({organisation: organisation}));
-
         return Images2.find({organisation: organisation});
     },
 
@@ -36,7 +34,6 @@ Template.image_list.helpers({
         // console.log("organisation session", organisation);
 
         if (organisation) {
-            console.log("organisation", organisation);
             return organisation;
         }
     },
