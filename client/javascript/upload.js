@@ -25,7 +25,7 @@ Template.upload.events({
 
     },
 
-    'dropped #dropzone': function(e) {
+    "dropped #dropzone": function(e) {
 
         // var user = Meteor.user();
         var organisation = Session.get("organisation");
@@ -52,6 +52,7 @@ Template.upload.events({
             });
         });
     }
+
 });
 
 
@@ -88,3 +89,21 @@ Template.upload.helpers({
     }
 
 });
+
+
+Template.cropper.onRendered(function () {
+
+        $('.to-be-cropped > img').cropper({
+            aspectRatio: 1 / 1,
+            autoCropArea: 0.65,
+            strict: true,
+            guides: true,
+            highlight: true,
+            dragCrop: true,
+            cropBoxMovable: true,
+            cropBoxResizable: true
+        });
+
+
+});
+

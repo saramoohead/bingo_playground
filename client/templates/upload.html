@@ -22,13 +22,19 @@
         {{/if}}
 
         {{#if imageJustUploaded}}
+
+
+
           <p>Step 3, crop the image you uploaded. It's got to be a square to work with the bingo board:</p>
           {{#each imageJustUploaded}}
-            <div class="thumbnail">
-              <img src="{{url}}" />
-            </div>
+
+            {{>cropper}}
+
             {{imageTitle}}
           {{/each}}
+
+
+
         {{/if}}
 
         </div>
@@ -51,3 +57,11 @@
   {{/if}}
 </template>
 
+
+<template name="cropper">
+
+   <div class="to-be-cropped">
+     <img src="{{url}}" />
+   </div>
+
+</template>

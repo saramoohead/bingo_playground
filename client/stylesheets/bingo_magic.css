@@ -94,6 +94,10 @@
     height: auto;
   }
 
+  .upload img {
+    max-width: 100%; /* very important for cropper*/
+  }
+
   .make_boards {
 
   }
