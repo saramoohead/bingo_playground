@@ -30,3 +30,5 @@ cfs:autoform
 mrt:jquery-jcrop
 standard-minifier-css
 standard-minifier-js
+cfs:graphicsmagick
+natestrauser:font-awesome

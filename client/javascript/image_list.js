@@ -25,6 +25,8 @@ Template.image_list.helpers({
 
         var organisation = Session.get("organisation");
 
+        console.log("images2", Images2.find({organisation: organisation}));
+
         return Images2.find({organisation: organisation});
     },
 
@@ -37,9 +39,36 @@ Template.image_list.helpers({
             console.log("organisation", organisation);
             return organisation;
         }
+    },
+
+    orgAdmin: function() {
+        var organisation = Session.get("organisation");
+        var user = Meteor.userId();
+
+        console.log("user.organisation", user.organisation);
+
+        if (user.organisation == organisation) {
+            return true;
+        }
     }
 });
 
+Template.image_list.events({
+  'click .delete-image': function(e) {
+    e.preventDefault();
+
+    var sure = confirm('Are you sure you want to delete this image?');
+    if (sure === true) {
+      Images2.remove({ _id:this._id }, function(error,result) {
+        if (error) {
+          toastr.error("Delete failed... " + error);
+        } else {
+          toastr.success('Image deleted!');
+        }
+      });
+    }
+  }
+});
 
 var incrementLimit = function(templateInstance) {
     var newLimit = templateInstance.limit.get() + parseInt(Meteor.settings.public.recordsPerPage);
