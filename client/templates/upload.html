@@ -10,7 +10,7 @@
           <form class="image-metadata">
             <p>Step 1: Enter the title and creator initials:</p>
             Short Picture Title (example: pig, rainbow, bicycle): <input type="text" name="image_title" maxlength="15">*<br />
-            Initials of Creator (example: ND, SOC, JJRM)<input type="text" name="image_creator" maxlength="6"><br />
+            Initials of Creator (example: ND, SOC, JJRM): <input type="text" name="image_creator" maxlength="6"><br />
             <input type="submit" class="btn-success btn-lg no-print" value = "Submit">
           </form>
 
@@ -22,9 +22,6 @@
         {{/if}}
 
         {{#if imageJustUploaded}}
-
-
-
           <p>Step 3, crop the image you uploaded. It's got to be a square to work with the bingo board:</p>
           {{#each imageJustUploaded}}
 
@@ -32,9 +29,6 @@
 
             {{imageTitle}}
           {{/each}}
-
-
-
         {{/if}}
 
         </div>
@@ -62,6 +56,9 @@
 
    <div class="to-be-cropped">
      <img src="{{url}}" />
+   </div>
+   <div>
+    <button id="finished-cropping">Finished Cropping</button>
    </div>
 
 </template>
