@@ -126,7 +126,7 @@ Template.upload.helpers({
 
 
 Template.cropper.onRendered(function () {
-        console.log("inside cropper blah onRendered");
+        console.log("inside cropper blah blah onRendered");
 
         if (!this.rendered) {
                 $('.to-be-cropped > img').cropper({
