@@ -54,11 +54,17 @@
 
 <template name="cropper">
 
-   <div class="to-be-cropped">
-     <img src="{{url}}" />
-   </div>
-   <div>
-    <button id="finished-cropping">Finished Cropping</button>
-   </div>
+  <!-- {{#if dataLoaded}} -->
+
+    <div class="to-be-cropped">
+      <img src="{{url}}" />
+    </div>
+    <div>
+     <button id="finished-cropping">Finished Cropping</button>
+    </div>
+<!-- 
+  {{else}}
+    {{>loader}}
+  {{/if}} -->
 
 </template>
