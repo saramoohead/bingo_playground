@@ -25,7 +25,7 @@ Template.image_list.helpers({
 
         var organisation = Session.get("organisation");
 
-        return Images2.find({organisation: organisation});
+        return Images2.find({organisation: organisation, isCropped: 1});
     },
 
     organisationSelected: function () {
