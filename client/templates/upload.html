@@ -3,12 +3,13 @@
   {{#if organisationSelected}}
     <div class="row full upload">
       <div class="col-md-6 col-centered middle">
+        <h1>UPLOAD</h1>
         <h2>You are uploading to {{organisationSelected}}.</h2>
         <p>By uploading, you promise that the picture is your work and that you allow other people to use it for bingo. Clear and bright pictures are best!</p>
       <!-- {{> dropzone}} -->
         <div>
           <form class="image-metadata">
-            <p>Step 1: Enter the title and creator initials:</p>
+            <p><span class="black">Step 1:</span> Enter the title and creator initials:</p>
             Short Picture Title (example: pig, rainbow, bicycle): <input type="text" name="image_title" maxlength="15">*<br />
             Initials of Creator (example: ND, SOC, JJRM): <input type="text" name="image_creator" maxlength="6"><br />
             <input type="submit" class="btn-success btn-lg no-print" value = "Submit">
@@ -22,7 +23,7 @@
         {{/if}}
 
         {{#if imageJustUploaded}}
-          <p>Step 3, crop the image you uploaded. It's got to be a square to work with the bingo board:</p>
+          <p><span class="black">Step 3:</span> Crop the image you uploaded. It's got to be a square to work with the bingo board:</p>
           {{#each imageJustUploaded}}
 
             {{>cropper}}

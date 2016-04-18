@@ -1,21 +1,19 @@
 <template name="image_list"> 
   <div class="row full image_list">
     {{#if organisationSelected}}
-      <h2>{{organisationSelected}}'s images:</h2>
+      <h2>{{organisationSelected}}'s pictures:</h2>
 
       {{#each images2}}
         <div class="all-images col-sm-5ths">
           <a href="{{url}}" target="_blank" class="thumbnail">
-            <img src="{{url}}" />
+            <img src="{{url}}">
           </a>
-          <!-- {{#if imageTitle}} -->
-          <p class="image_caption">{{imageTitle}} by {{imageCreator}}</p>
-            <!-- {{#if orgAdmin}} -->
+          <p class="image-caption">{{imageTitle}}<br/>by {{imageCreator}}</p>
+            {{#if orgAdmin}}
               <a class="delete-image">
                 <i class="fa fa-trash"></i>
               </a>
-            <!-- {{/if}} -->
-          <!-- {{/if}} -->
+            {{/if}}
         </div>
       {{/each}}
 

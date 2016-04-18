@@ -42,6 +42,7 @@ Template.image_list.helpers({
         var organisation = Session.get("organisation");
         var user = Meteor.userId();
 
+        console.log("user", user);
         console.log("user.organisation", user.organisation);
 
         if (user.organisation == organisation) {

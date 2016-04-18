@@ -51,34 +51,57 @@ Template.upload.events({
         });
     },
 
+    "click #file-upload": function () {
+
+        var organisation = Session.get("organisation");
+        var imageTitle = Session.get("imageTitle");
+        var imageCreator = Session.get("imageCreator");
+
+        var file = $('#file').get(0).files[0];
+
+        var newFile = new FS.File(file);
+        newFile.organisation = organisation;
+        newFile.imageTitle = imageTitle;
+        newFile.imageCreator = imageCreator;
+        newFile.isCropped = 0;
+
+        Images2.insert(newFile, function (error, fileObj) {
+            if (error) {
+                toastr.error("Upload failed... please try again.");
+            } else {
+                toastr.success('Upload succeeded. Time to crop!');
+                Session.set("imageJustUploaded", 1);
+            }
+        });
+    },
+
     "click #finished-cropping": function () {
 
         var organisation = Session.get("organisation");
         var imageTitle = Session.get("imageTitle");
         var imageCreator = Session.get("imageCreator");
 
-
         var croppedImage =
                     $('.to-be-cropped > img')
                         .cropper("getCroppedCanvas")
                         .toDataURL();
 
-            var newFile = new FS.File(croppedImage);
-            newFile.organisation = organisation;
-            newFile.imageTitle = imageTitle;
-            newFile.imageCreator = imageCreator;
-            newFile.isCropped = 1;
+         var newFile = new FS.File(croppedImage);
+         newFile.organisation = organisation;
+         newFile.imageTitle = imageTitle;
+         newFile.imageCreator = imageCreator;
+         newFile.isCropped = 1;
 
-            Images2.insert(newFile, function (error, fileObj) {
-            if (error) {
-                toastr.error("Upload failed... please try again.");
-            } else {
-                toastr.success('Upload succeeded!');
-                Session.set("imageJustUploaded", 0);
-                Session.set("imageTitle", null);
-                Session.set("imageCreator", null);
-                }
-            });
+         Images2.insert(newFile, function (error, fileObj) {
+         if (error) {
+             toastr.error("Upload failed... please try again.");
+         } else {
+             toastr.success("Upload succeeded!");
+             Session.set("imageJustUploaded", 0);
+             Session.set("imageTitle", null);
+             Session.set("imageCreator", null);
+             }
+         });
     }
 
 });
