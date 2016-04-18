@@ -56,11 +56,10 @@
     position: relative;
     padding: 5% 0 5% 0;
     margin: 0 auto 0 auto;
-    
   }
 
   .welcome {
-    background: #bed94a;
+    background: #bff7ae;
   }
 
   .middle {
@@ -84,7 +83,7 @@
 
   .image_list {
     position: relative;
-    background: #fff060;
+    background: #baf9a7;
     width: 80%;
     padding: 2%;
   }

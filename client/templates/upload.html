@@ -6,7 +6,7 @@
         <h1>UPLOAD</h1>
         <h2>You are uploading to {{organisationSelected}}.</h2>
         <p>By uploading, you promise that the picture is your work and that you allow other people to use it for bingo. Clear and bright pictures are best!</p>
-      <!-- {{> dropzone}} -->
+
         <div>
           <form class="image-metadata">
             <p><span class="black">Step 1:</span> Enter the title and creator initials:</p>
@@ -16,7 +16,7 @@
           </form>
 
         {{#if titleSubmitted}}
-          <p>Upload your image {{titleSubmitted}}: </p>
+          <p><span class="black">Step 2:</span> Upload your "{{titleSubmitted}}" image.</p>
           {{> dropzone}}
         {{else}} 
           {{> fakeDropzone}}
