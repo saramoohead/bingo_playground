@@ -124,23 +124,21 @@ Template.upload.helpers({
 
 });
 
+Template.cropper.events({
+  'load img'(event, template) {
+    console.log(template.$('img').prop('width'));
 
-Template.cropper.onRendered(function () {
-        console.log("inside cropper blah blah onRendered");
+    $('.to-be-cropped > img').cropper({
+        aspectRatio: 1 / 1,
+        autoCropArea: 0.65,
+        strict: true,
+        guides: true,
+        highlight: true,
+        dragCrop: false,
+        cropBoxMovable: true,
+        cropBoxResizable: true
+    });
 
-        if (!this.rendered) {
-                $('.to-be-cropped > img').cropper({
-                    aspectRatio: 1 / 1,
-                    autoCropArea: 0.65,
-                    strict: true,
-                    guides: true,
-                    highlight: true,
-                    dragCrop: false,
-                    cropBoxMovable: true,
-                    cropBoxResizable: true
-                });
-            this.rendered = true;
-        }
-
+  },
 });
 
