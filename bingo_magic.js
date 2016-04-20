@@ -26,9 +26,9 @@ Router.route("boards", {
 
 
 if (Meteor.isClient) {
-  Meteor.subscribe("images");
-  Meteor.subscribe("numbers");
-  Meteor.subscribe("boards");
+    Meteor.subscribe("images");
+    Meteor.subscribe("numbers");
+    Meteor.subscribe("boards");
 
     Session.set("organisation", "STJOHNS");
 
