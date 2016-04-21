@@ -25,6 +25,8 @@ Template.image_list.helpers({
 
         var organisation = Session.get("organisation");
 
+        // console.log("images2 find no fetch", Images2.find({organisation: organisation, isCropped: 1}));
+
         return Images2.find({organisation: organisation, isCropped: 1});
     },
 
