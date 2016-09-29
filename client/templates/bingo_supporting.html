@@ -7,18 +7,18 @@
   </template>
 
   <template name="animal_bingo">
-    <div class="currentAnimal"><img src="{{currentImageSRC.imageSRC}}"></div>
+    <div class="currentAnimal numberCall"><img src="{{currentImageSRC.imageSRC}}"><br />{{currentImageSRC.imageName}}<br /> {{#if currentImageSRC.imageCreator}}by {{currentImageSRC.imageCreator}}{{/if}}</div>
   </template>
 
   <template name="numbers_bingo">
-      <div class="col-sm-4">
+      <div class="col-md-6">
         <div class="currentNumbers">{{firstNumber.number}}</div>
         <div class="numberCall">{{firstNumber.numberCall}}</div>
       </div>
-      <div class="col-sm-4">
+<!--       <div class="col-sm-4">
         <div class="currentNumbers">{{secondNumber.number}}</div>
         <div class="numberCall">{{secondNumber.numberCall}}</div>
-      </div>
+      </div> -->
   </template>
 
   <template name="new_game">

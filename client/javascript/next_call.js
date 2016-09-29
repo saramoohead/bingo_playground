@@ -26,18 +26,10 @@
         // console.log("numbersArray length", numbersArray.length);
         Meteor.call("excludeNumber", firstNumber);
 
-        // Second Number
-        numbersArray = Numbers.find({exclude: false}).fetch();
-        randomNumbersIndex = Math.floor( Math.random() * numbersArray.length );
-        var secondNumber = numbersArray[randomNumbersIndex];
-        // console.log("secondNumber", secondNumber);
-        // console.log("numbersArray length", numbersArray.length);
-        Meteor.call("excludeNumber", secondNumber);
-
         Session.set("firstNumber", firstNumber);
-        Session.set("secondNumber", secondNumber);
 
-        return currentImageSRC, firstNumber, secondNumber;
+
+        return currentImageSRC, firstNumber;
 
         }
     });

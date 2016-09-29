@@ -21,9 +21,13 @@ Template.boards.events({
 
         var selectedImages = [];
         var usedImageIds = [];
+        var freeSpaceImage = Images.findOne({imageName: 'freespace'});
 
+        console.log('freeSpaceImage', freeSpaceImage);
+        
+        // Loop through getting a random image 25 times to fill board
             for (var i=0; i<25; i++) {
-                var possibleImages = Images.find({_id: {$nin: usedImageIds}}).fetch();
+                var possibleImages = Images.find({_id: {$nin: usedImageIds}, exclude: false}).fetch();
                 // var possibleImages = Images2.find({_id: {$nin: usedImageIds}, organisation: organisation, isCropped: 1}).fetch();
                 var imageId = Math.floor( Math.random() * possibleImages.length );
                 var image = possibleImages[imageId];
@@ -32,6 +36,13 @@ Template.boards.events({
                 usedImageIds.push(image._id);
                 // console.log("usedImageIds", usedImageIds);
             }
+        
+        // Replace the middle square with free space.
+        if (freeSpaceImage) {
+            selectedImages[12] = freeSpaceImage;
+        }
+
+        console.log("selectedImagesInsideBoardsAfterFreeSpace", selectedImages);
 
         Meteor.call("saveBoard", selectedImages);
 

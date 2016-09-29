@@ -14,8 +14,11 @@
         {{#each this.board}}
           <div class="col-sm-5ths boardSquare">
             <img src="{{imageSRC}}"><br />
-            <span class="board-caption">{{imageTitle}}<br />
-            <span class="tiny">by {{imageCreator}}</span></span>
+            <span class="board-caption">{{imageName}}<br />
+            {{#if imageCreator}}
+              <span class="tiny">by {{imageCreator}}</span>
+            {{/if}}
+            </span>
           </div>
         {{/each}}
       </div>

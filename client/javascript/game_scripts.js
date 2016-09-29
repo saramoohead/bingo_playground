@@ -29,10 +29,6 @@
             var firstNumber = Session.get("firstNumber");
             return firstNumber;
 
-        },
-        secondNumber: function () {
-            var secondNumber = Session.get("secondNumber");
-            return secondNumber;
         }
     });
 

@@ -5,15 +5,16 @@
 
       {{#each images2}}
         <div class="all-images col-sm-5ths">
-          <a href="{{url}}" target="_blank" class="thumbnail">
-            <img src="{{url}}">
-          </a>
-          <p class="image-caption">{{imageTitle}}<br/>by {{imageCreator}}</p>
+          <!-- <a href="{{imgSrc}}" target="_blank" class="thumbnail"> -->
+            <img src="{{imageSRC}}">
+          <!-- </a> -->
+          <p class="image-caption">{{imageName}}<br/>
+            {{#if imageCreator}}by {{imageCreator}}{{/if}}</p>
             <!-- {{#if orgAdmin}} -->
-              <a class="delete-image">
+<!--               <a class="delete-image">
                 <i class="fa fa-trash"></i>
               </a>
-            <!-- {{/if}} -->
+ -->            <!-- {{/if}} -->
         </div>
       {{/each}}
 

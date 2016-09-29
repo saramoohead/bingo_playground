@@ -151,6 +151,10 @@
     font-size: 1500%;
   }
 
+  .currentAnimal img {
+    height: 400px;
+  }
+
   .numberCall {
     font-size: 250%;
   }
@@ -191,8 +195,7 @@
   }
 
   .custom_button img {
-    height: 350px;
-    width: 350px;
+    height: 200px;
   }
 
   .col-xs-5ths, .col-sm-5ths, .col-md-5ths, .col-lg-5ths { 
@@ -220,6 +223,13 @@
     display: none; 
   }
 
+ body {
+    font-family: LiberationSans, Arial, sans-serif;
+    font-size: 16px;
+    /*line-height: 1.5;*/
+    color: #7d7d7d;
+  }
+
   .row {
     text-align: center;
     min-height: 100px;
@@ -236,31 +246,30 @@
     border-width: 2px;
     border-color: #939393;
     background-size: cover;
-    line-height: 90%;
+    line-height: 40%;
     overflow: hidden;
   }
 
   .boardSquare img {
-    height: auto;
-    width: 65%;
-    margin-bottom: 3px;
+    height: 75%;
+    width: auto;
+    margin-bottom: .5px;
   }
 
   .board {
     width: 400px;
     margin: 50px;
     border-style: solid;
-    border-width: 10px;
+    border-color: #939393;
+    border-width: 5px;
   }
 
   .board-caption {
-    font-size: 80%;
-    line-height: 60%
+    font-size: 60%;
   }
 
   .tiny {
-    font-size: .4em;
-    line-height: 10%
+    font-size: 60%;
   }
 
   .page-break { 
