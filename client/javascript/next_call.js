@@ -5,6 +5,7 @@
 
         var imagesArray = Images.find({exclude: false}).fetch();
         // console.log("array", imagesArray.length, imagesArray);
+
         var randomIndex = Math.floor( Math.random() * imagesArray.length );
         var currentImageSRC = imagesArray[randomIndex];
 

@@ -24,10 +24,10 @@ Template.boards.events({
         var freeSpaceImage = Images.findOne({imageName: 'freespace'});
 
         console.log('freeSpaceImage', freeSpaceImage);
-        
+
         // Loop through getting a random image 25 times to fill board
             for (var i=0; i<25; i++) {
-                var possibleImages = Images.find({_id: {$nin: usedImageIds}, exclude: false}).fetch();
+                var possibleImages = Images.find({_id: {$nin: usedImageIds}, imageName: {$nin: ["freespace"]}}).fetch();
                 // var possibleImages = Images2.find({_id: {$nin: usedImageIds}, organisation: organisation, isCropped: 1}).fetch();
                 var imageId = Math.floor( Math.random() * possibleImages.length );
                 var image = possibleImages[imageId];
