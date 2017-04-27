@@ -59,7 +59,7 @@ if (Meteor.isServer) {
     // console.log("resettingDatabases");
     Meteor.call("resetImagesDatabase");
     Meteor.call("resetNumbersDatabase");
-    Meteor.call("resetBoardsDatabase");
+    // Meteor.call("resetBoardsDatabase");
     Meteor.call("insertImages");
     Meteor.call("insertNumbers");
 
