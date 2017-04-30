@@ -28,13 +28,12 @@ Template.boards.events({
         // Loop through getting a random image 25 times to fill board
             for (var i=0; i<25; i++) {
                 var possibleImages = Images.find({_id: {$nin: usedImageIds}, imageName: {$nin: ["freespace"]}}).fetch();
-                // var possibleImages = Images2.find({_id: {$nin: usedImageIds}, organisation: organisation, isCropped: 1}).fetch();
+
                 var imageId = Math.floor( Math.random() * possibleImages.length );
                 var image = possibleImages[imageId];
 
                 selectedImages.push(image);
                 usedImageIds.push(image._id);
-                // console.log("usedImageIds", usedImageIds);
             }
         
         // Replace the middle square with free space.
@@ -48,8 +47,6 @@ Template.boards.events({
 
         }
 
-        // TODO: manipulate selectedImages for position 12 to be free space
-
     }
 });
 
@@ -60,30 +57,9 @@ Template.boards.helpers({
         var boardImages = Boards.find();
 
         if (boardImages) {
-            console.log("Boards", boardImages);
+            // console.log("Boards", boardImages);
             return boardImages;
         }
-
-        // var boardImages = Boards.find();
-        // var length = boardImages.fetch().length;
-        // console.log("boardImages.fetch", boardImages.fetch());
-        // console.log("boardImages.length", length);
-
-        // var imageIds = [];
-        // var imageId;
-
-        // for (var i=0; i<length; i++) {
-
-
-        //         imageId = boardImagesUnfetched[i]._id;
-
-        //         imageIds.push(imageId);
-        //         console.log("imageId", imageId);
-        // }
-
-        // var boardImages = Images2.find({_id: {$in: imageIds}});
-        // console.log("boardImages", boardImages);
-        // return boardImages;
 
     },
     pageBreak: function (index) {
